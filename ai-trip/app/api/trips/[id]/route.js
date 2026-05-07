@@ -1,17 +1,40 @@
+
+
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { getUserFromRequest } from "@/lib/auth";
 
 export async function GET(req, { params }) {
   const user = getUserFromRequest(req);
-  if (!user) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  if (!user) {
+    return Response.json(
+      { error: "Unauthorized" },
+      { status: 401 }
+    );
+  }
 
   const { id } = await params;
 
+  // 🔹 Check membership
+  const { data: membership } = await supabaseAdmin
+    .from("trip_members")
+    .select("*")
+    .eq("trip_id", id)
+    .eq("user_id", user.userId)
+    .single();
+
+  if (!membership) {
+    return Response.json(
+      { error: "Access denied" },
+      { status: 403 }
+    );
+  }
+
+  // 🔹 Fetch trip
   const { data, error } = await supabaseAdmin
     .from("trips")
     .select("*")
     .eq("id", id)
-    .eq("created_by", user.userId)
     .single();
 
   return Response.json({ data, error });
@@ -19,10 +42,31 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
   const user = getUserFromRequest(req);
-  if (!user) return Response.json({ error: "Unauthorized" }, { status: 401 });
+
+  if (!user) {
+    return Response.json(
+      { error: "Unauthorized" },
+      { status: 401 }
+    );
+  }
 
   const { id } = await params;
   const body = await req.json();
+
+  // 🔹 Verify membership
+  const { data: membership } = await supabaseAdmin
+    .from("trip_members")
+    .select("*")
+    .eq("trip_id", id)
+    .eq("user_id", user.userId)
+    .single();
+
+  if (!membership) {
+    return Response.json(
+      { error: "Access denied" },
+      { status: 403 }
+    );
+  }
 
   const { data, error } = await supabaseAdmin
     .from("trips")
@@ -31,7 +75,6 @@ export async function PUT(req, { params }) {
       description: body.description,
     })
     .eq("id", id)
-    .eq("created_by", user.userId)
     .select()
     .single();
 
@@ -52,3 +95,8 @@ export async function DELETE(req, { params }) {
 
   return Response.json({ success: !error });
 }
+
+
+
+
+

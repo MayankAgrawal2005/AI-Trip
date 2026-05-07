@@ -7,10 +7,13 @@ export default function Trips() {
   const [trips, setTrips] = useState([]);
   const [title, setTitle] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [invites,setInvites] = useState([]);
+
 
   const token = typeof window !== "undefined"
     ? localStorage.getItem("token")
     : null;
+
 
   const fetchTrips = async () => {
     const res = await fetch("/api/trips", {
@@ -61,9 +64,43 @@ export default function Trips() {
     fetchTrips();
   };
 
+
+  const fetchInvites = async () => {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch("/api/invites", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.json();
+
+  setInvites(data.data || []);
+};
+
+
+const acceptInvite = async (inviteId) => {
+  const token = localStorage.getItem("token");
+
+  await fetch(`/api/invites/${inviteId}/accept`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  fetchInvites();
+  fetchTrips();
+};
+
   useEffect(() => {
     fetchTrips();
+    fetchInvites();
   }, []);
+
+
+
 
   return (
     <div style={{ padding: 20 }}>
@@ -75,6 +112,26 @@ export default function Trips() {
         placeholder="Trip title"
       />
 
+      <hr />
+
+<h2>Pending Invites</h2>
+
+{invites.length === 0 && <p>No pending invites</p>}
+
+{invites.map((invite) => (
+  <div key={invite.id} style={{ marginBottom: 10 }}>
+    <span>
+      Invited to: {invite.trips?.title}
+    </span>
+
+    <button
+      onClick={() => acceptInvite(invite.id)}
+      style={{ marginLeft: 10 }}
+    >
+      Accept
+    </button>
+  </div>
+))}
       <button onClick={editingId ? () => updateTrip(editingId) : createTrip}>
         {editingId ? "Update" : "Create"}
       </button>
@@ -97,6 +154,18 @@ export default function Trips() {
           </button>
         </div>
       ))}
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 }
