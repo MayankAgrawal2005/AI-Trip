@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Voyage Elite - Premium Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(13, 21, 21, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .glass-input {
+            background: rgba(8, 15, 16, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(132, 148, 149, 0.3);
+        }
+        .glass-input:focus {
+            border-color: #00dbe9;
+            box-shadow: 0 0 15px rgba(0, 219, 233, 0.3);
+            outline: none;
+        }
+        .btn-glow:active {
+            box-shadow: 0 0 20px rgba(0, 219, 233, 0.6);
+            transform: scale(0.98);
+        }
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#d8b9ff",
+                      "on-secondary-container": "#d5b5ff",
+                      "on-primary-container": "#006970",
+                      "tertiary-container": "#d6d8ea",
+                      "surface-tint": "#00dbe9",
+                      "on-error": "#690005",
+                      "on-primary": "#00363a",
+                      "surface-container": "#192122",
+                      "primary-fixed-dim": "#00dbe9",
+                      "primary-container": "#00f0ff",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-tertiary": "#2c303d",
+                      "on-tertiary-container": "#5a5e6d",
+                      "surface-dim": "#0d1515",
+                      "surface": "#0d1515",
+                      "primary": "#dbfcff",
+                      "on-tertiary-fixed-variant": "#434654",
+                      "tertiary-fixed": "#dfe2f3",
+                      "inverse-surface": "#dce4e5",
+                      "surface-bright": "#333b3b",
+                      "tertiary-fixed-dim": "#c3c6d7",
+                      "tertiary": "#f5f5ff",
+                      "surface-container-low": "#151d1e",
+                      "on-tertiary-fixed": "#171b28",
+                      "secondary-container": "#6e06d0",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#d8b9ff",
+                      "surface-container-high": "#232b2c",
+                      "on-surface": "#dce4e5",
+                      "inverse-on-surface": "#2a3233",
+                      "on-background": "#dce4e5",
+                      "on-surface-variant": "#b9cacb",
+                      "surface-container-lowest": "#080f10",
+                      "surface-variant": "#2e3637",
+                      "outline": "#849495",
+                      "background": "#0d1515",
+                      "on-secondary": "#450086",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#002022",
+                      "outline-variant": "#3b494b",
+                      "secondary-fixed": "#eddcff",
+                      "on-secondary-fixed-variant": "#6200bc",
+                      "inverse-primary": "#006970",
+                      "surface-container-highest": "#2e3637",
+                      "primary-fixed": "#7df4ff",
+                      "on-secondary-fixed": "#290055"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "xs": "4px",
+                      "xl": "64px",
+                      "md": "24px",
+                      "base": "8px",
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "margin": "24px"
+              },
+              "fontFamily": {
+                      "h1": ["Inter"],
+                      "h3": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "h2": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-on-surface selection:bg-surface-tint/30 flex flex-col font-body-md overflow-x-hidden">
+<!-- Background Layer with Radial Gradient and Image -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-[#020408] via-[#0d1515] to-[#020408]"></div>
+<div class="absolute inset-0 opacity-40 mix-blend-overlay">
+<img class="w-full h-full object-cover" data-alt="A breathtaking view of jagged mountain peaks under a vast midnight sky filled with stars and faint celestial nebulae. The scene is rendered in deep indigo and midnight blue tones with a soft, ethereal blur that creates a sense of immense depth and tranquility, matching the premium glassmorphism UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrMM_iVL-2zgxI4M-cJ7GnOrfRWIqjXiFA--PNySqjVCdLnogIK5gjN6LN-b5DEt4JgM10bk22xvHJX9P4DakFA9iyQBQ_4F2WtTIfpqHHhcPG0Lz41pPPJyB9tAW1ha81WMKv39KENjkvnSy91cxd9lk200DnxfXaG4L4nO-Ysf-nZRzEHTsJUuZEeJUYfTYwTQfsBO7GYmWcT4ufxFTV-FAV60Zqvu6lVyw6ArzNOKBFz30kU8OMQC4bcuti6-CaBdV5QOnJJs4"/>
+</div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,219,233,0.05)_0%,_transparent_70%)]"></div>
+</div>
+<!-- Main Content Wrapper -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center px-margin py-xl">
+<!-- Branding Section -->
+<header class="text-center mb-lg">
+<div class="inline-flex items-center justify-center p-base rounded-xl glass-card mb-md">
+<span class="material-symbols-outlined text-primary text-[48px]" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary tracking-tighter">Voyage Elite</h1>
+<p class="text-on-surface-variant/80 font-body-lg mt-xs">Precision planning for the luxury explorer.</p>
+</header>
+<!-- Login Container -->
+<section class="w-full max-w-[440px] glass-card rounded-xl p-lg flex flex-col gap-md">
+<h2 class="font-h3 text-h3 text-primary">Welcome Back</h2>
+<form class="flex flex-col gap-md">
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase ml-xs">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-[20px]">mail</span>
+<input class="w-full glass-input rounded-lg pl-[48px] pr-md py-md text-on-surface placeholder:text-on-surface-variant/30" placeholder="explorer@voyage.elite" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase ml-xs">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-[20px]">lock</span>
+<input class="w-full glass-input rounded-lg pl-[48px] pr-md py-md text-on-surface placeholder:text-on-surface-variant/30" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-between mt-xs px-xs">
+<label class="flex items-center gap-base cursor-pointer group">
+<div class="w-5 h-5 glass-input rounded border-outline-variant flex items-center justify-center group-hover:border-primary-fixed-dim transition-colors">
+<!-- Custom Checkbox (Hidden) -->
+</div>
+<span class="text-on-surface-variant text-[14px]">Remember Me</span>
+</label>
+<a class="text-surface-tint text-[14px] hover:underline decoration-surface-tint/50" href="#">Forgot Secret?</a>
+</div>
+<!-- Sign In Button -->
+<button class="mt-md w-full bg-gradient-to-r from-surface-tint to-secondary-container py-md rounded-lg text-on-primary font-h3 text-body-lg shadow-[0_0_20px_rgba(0,219,233,0.3)] btn-glow transition-all duration-300" type="submit">
+                    Sign In
+                </button>
+</form>
+<div class="flex items-center gap-md my-base">
+<div class="h-[1px] flex-1 bg-white/10"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/40">OR ACCESS VIA</span>
+<div class="h-[1px] flex-1 bg-white/10"></div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<button class="glass-card hover:bg-white/5 py-base rounded-lg flex items-center justify-center gap-base transition-colors">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<span class="text-[14px]">Biometrics</span>
+</button>
+<button class="glass-card hover:bg-white/5 py-base rounded-lg flex items-center justify-center gap-base transition-colors">
+<span class="material-symbols-outlined text-[20px]">key</span>
+<span class="text-[14px]">Passkey</span>
+</button>
+</div>
+</section>
+<!-- Skeleton Suggested Destinations -->
+<section class="mt-xl w-full max-w-[800px]">
+<div class="flex items-center justify-between mb-md px-margin">
+<h3 class="font-h3 text-h3 text-primary/80">Tailored Destinations</h3>
+<div class="w-24 h-4 skeleton rounded-full opacity-20"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md px-margin">
+<!-- Skeleton Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden h-[180px] flex flex-col p-md">
+<div class="w-full h-24 skeleton rounded-lg mb-base opacity-20"></div>
+<div class="w-2/3 h-4 skeleton rounded-full mb-xs opacity-30"></div>
+<div class="w-1/2 h-3 skeleton rounded-full opacity-10"></div>
+</div>
+<!-- Skeleton Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden h-[180px] flex flex-col p-md hidden md:flex">
+<div class="w-full h-24 skeleton rounded-lg mb-base opacity-20"></div>
+<div class="w-2/3 h-4 skeleton rounded-full mb-xs opacity-30"></div>
+<div class="w-1/2 h-3 skeleton rounded-full opacity-10"></div>
+</div>
+<!-- Skeleton Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden h-[180px] flex flex-col p-md hidden md:flex">
+<div class="w-full h-24 skeleton rounded-lg mb-base opacity-20"></div>
+<div class="w-2/3 h-4 skeleton rounded-full mb-xs opacity-30"></div>
+<div class="w-1/2 h-3 skeleton rounded-full opacity-10"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-xl text-center">
+<p class="text-on-surface-variant font-body-md">
+                Don't have an account? 
+                <a class="text-primary font-semibold ml-xs hover:text-surface-tint transition-colors" href="#">Sign Up</a>
+</p>
+</footer>
+</main>
+<!-- Visual Accents (Glows) -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-surface-tint/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary-container/10 blur-[120px] rounded-full pointer-events-none"></div>
+</body></html>

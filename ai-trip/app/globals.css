@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #3B82F6;
+  --color-primary-hover: #2563EB;
+  --color-accent: #10B981;
+  --color-background: #020617;
+  --color-surface: #0F172A;
+  --color-on-surface: #F8FAFC;
+  --color-on-surface-variant: #94A3B8;
+  --color-border: #1E293B;
+  --color-error: #EF4444;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer utilities {
+  .glass-card {
+    @apply bg-surface/50 backdrop-blur-2xl rounded-[24px] border border-border/50 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-300;
+  }
+  
+  .glass-input {
+    @apply bg-slate-900/50 border border-border text-on-surface rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .btn-premium {
+    @apply bg-primary text-white font-bold rounded-xl px-6 py-3 hover:bg-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/20;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent text-on-surface-variant font-medium rounded-xl px-6 py-3 hover:bg-white/5 hover:text-on-surface transition-all duration-200;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .skeleton {
+    @apply bg-gradient-to-r from-border/30 via-border/10 to-border/30 bg-[length:400%_100%] animate-pulse rounded-lg;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-on-surface selection:bg-primary/20 selection:text-primary min-h-screen antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  @apply tracking-tight font-black;
 }
